@@ -16,6 +16,7 @@ gem 'heroku'
 # gem 'aws-s3', :require => 'aws/s3'
 gem 'jquery-rails'
 # gem 'omniauth'
+gem 'pg'
 
 group :development, :test do
   gem 'rspec-rails'
