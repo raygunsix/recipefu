@@ -23,7 +23,7 @@ describe "Recipes" do
   end
 
   # describe "GET /recipes/new" do
-  #   it "should list all recipes" do
+  #   it "should list all recipes",  :js => true do
   #     get "/recipes/new"
   #     fill_in "Title", :with => "Rabbit Stew"
   #     fill_in "Description", :with => "This is the best stew ever"
