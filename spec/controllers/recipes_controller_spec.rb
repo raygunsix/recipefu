@@ -23,25 +23,25 @@ describe RecipesController do
   # This should return the minimal set of attributes required to create a valid
   # Recipe. As you add validations to Recipe, be sure to
   # update the return value of this method accordingly.
-  def valid_attributes
-    {}
-  end
+  # def valid_attributes
+  #   {}
+  # end
 
-  describe "GET index" do
-    it "assigns all recipes as @recipes" do
-      recipe = Recipe.create! valid_attributes
-      get :index
-      assigns(:recipes).should eq([recipe])
-    end
-  end
+  # describe "GET index" do
+  #   it "assigns all recipes as @recipes" do
+  #     recipe = Recipe.create! valid_attributes
+  #     get :index
+  #     assigns(:recipes).should eq([recipe])
+  #   end
+  # end
 
-  describe "GET show" do
-    it "assigns the requested recipe as @recipe" do
-      recipe = Recipe.create! valid_attributes
-      get :show, :id => recipe.id.to_s
-      assigns(:recipe).should eq(recipe)
-    end
-  end
+  # describe "GET show" do
+  #   it "assigns the requested recipe as @recipe" do
+  #     recipe = Recipe.create! valid_attributes
+  #     get :show, :id => recipe.id.to_s
+  #     assigns(:recipe).should eq(recipe)
+  #   end
+  # end
 
   describe "GET new" do
     it "assigns a new recipe as @recipe" do
