@@ -4,8 +4,6 @@
 
 <% @recipes.each do |recipe| %>
   <tr>
-    <td><%= recipe.string %></td>
-    <td><%= recipe.string %></td>
     <td><%= link_to 'Show', recipe %></td>
     <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
     <td><%= link_to 'Destroy', recipe, :confirm => 'Are you sure?', :method => :delete %></td>
