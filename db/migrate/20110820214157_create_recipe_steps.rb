@@ -10,6 +10,6 @@ class CreateSteps < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :recipe_steps
+    drop_table :steps
   end
 end

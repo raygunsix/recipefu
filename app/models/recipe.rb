@@ -1,3 +1,3 @@
 class Recipe < ActiveRecord::Base
-  has_many: 
+  has_many :steps
 end

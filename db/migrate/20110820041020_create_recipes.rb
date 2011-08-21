@@ -1,8 +1,8 @@
 class CreateRecipes < ActiveRecord::Migration
   def self.up
     create_table :recipes do |t|
-      t.name :string
-      t.description :string
+      t.string :title
+      t.string :description
 
       t.timestamps
     end
