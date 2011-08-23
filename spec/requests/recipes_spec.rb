@@ -25,6 +25,7 @@ describe "Recipes" do
   # describe "GET /recipes/new" do
   #   it "should list all recipes",  :js => true do
   #     get "/recipes/new"
+  #     puts response.body.to_yaml
   #     fill_in "Title", :with => "Rabbit Stew"
   #     fill_in "Description", :with => "This is the best stew ever"
   #     click_button "Create Recipe"

@@ -15,7 +15,7 @@ gem 'heroku'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 gem 'jquery-rails'
-# gem 'omniauth'
+gem 'omniauth', "~> 0.2.6"
 gem 'pg'
 
 group :development, :test do
