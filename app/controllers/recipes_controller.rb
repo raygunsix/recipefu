@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  before_filter :require_login, :except => [:index, :show]
+  
   # GET /recipes
   # GET /recipes.xml
   def index
@@ -41,6 +43,8 @@ class RecipesController < ApplicationController
   # POST /recipes.xml
   def create
     @recipe = Recipe.new(params[:recipe])
+
+    @recipe.user = current_user
 
     respond_to do |format|
       if @recipe.save
