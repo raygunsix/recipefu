@@ -2,6 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'capybara/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -25,5 +26,16 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
   
-  Capybara.javascript_driver = :webkit
+  config.include IntegrationSpecHelper, :type => :request
+  
 end
+
+Capybara.javascript_driver = :webkit
+
+Capybara.default_host = 'http://127.0.0.1'
+
+OmniAuth.config.test_mode = true
+OmniAuth.config.add_mock(:twitter, {
+  :uid => '67354',
+  :name => 'Bob Gainey'
+})
