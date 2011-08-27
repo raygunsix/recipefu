@@ -7,7 +7,7 @@ feature "Recipes", %q{
 } do
 
   before(:each) do
-    @recipe = Factory.build(:recipe)
+    @recipe = Factory.build(:recipe, :user_id => 1)
   end
 
   scenario "list recipes" do
