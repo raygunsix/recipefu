@@ -8,6 +8,7 @@ feature "Recipes", %q{
 
   before(:each) do
     @recipe = Factory.build(:recipe, :user_id => 1)
+    @step = Factory.build(:step)
   end
 
   scenario "list recipes" do
@@ -27,6 +28,7 @@ feature "Recipes", %q{
     visit "/recipes/new"
     fill_in "Title", :with => @recipe.title
     fill_in "Description", :with => @recipe.description
+    fill_in "Step", :with => @step.instructions
     click_on "Create Recipe"
     page.should have_content(@recipe.title)
     page.should have_content("Recipe was successfully created.")
@@ -45,7 +47,11 @@ feature "Recipes", %q{
   
   scenario "create a recipe" do
     login_with_oauth
-    post_via_redirect "/recipes", {:title => @recipe.title, :description => @recipe.description}
+    post_via_redirect "/recipes", {
+      :title => @recipe.title, 
+      :description => @recipe.description, 
+      :step => @step.instructions
+    }
     response.status.should be(200)
     #page.should have_content("Recipe was successfully created.")
   end
@@ -53,7 +59,10 @@ feature "Recipes", %q{
   scenario "should update an existing recipe" do
     @recipe.save
     login_with_oauth
-    put_via_redirect "/recipes/" + @recipe.id.to_s, {:title => "Chicken Soup Extreme", :description => @recipe.description}
+    put_via_redirect "/recipes/" + @recipe.id.to_s, {
+      :title => "Chicken Soup Extreme",
+      :description => @recipe.description,
+    }
     response.status.should be(200)
     #page.should have_content("Recipe was successfully updated.")
   end  

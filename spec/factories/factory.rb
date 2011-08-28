@@ -12,5 +12,9 @@ FactoryGirl.define do
     title "Chicken Soup"
     description "Mom's chicken soup recipe. It was my favorite when I was 12."
   end
-  
+
+  factory :step do
+    instructions "Boil water"
+  end
+
 end
