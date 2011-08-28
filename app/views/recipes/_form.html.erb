@@ -19,6 +19,17 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
+  
+  <% f.fields_for :steps do |builder| %>  
+  <div>  
+    <%= builder.label :instructions, "Step" %><br />  
+    <%= builder.text_area :instructions, :rows => 3 %>  
+  </div>  
+  <div>  
+    <%= builder.hidden_field :step %>  
+  </div>
+  <% end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
