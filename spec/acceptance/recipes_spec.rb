@@ -8,7 +8,7 @@ feature "Recipes", %q{
 
   before(:each) do
     @recipe = Factory.build(:recipe, :user_id => 1)
-    @step = Factory.build(:step)
+    @step = Factory.build(:step, :recipe_id => 1)
   end
 
   scenario "list recipes" do
@@ -44,7 +44,18 @@ feature "Recipes", %q{
     page.should have_content("Rabbit Stew")
     page.should have_content("Recipe was successfully updated.")
   end
-  
+
+  scenario "delete a recipe step" do
+    @recipe.save
+    @step.save
+    login_with_oauth
+    visit "/recipes/" + @recipe.id.to_s + "/edit"
+    click_link "remove"
+    click_on "Update Recipe"
+    page.should have_content("Recipe was successfully updated.")
+    page.should_not have_content("Rabbit Stew")
+  end
+
   scenario "create a recipe" do
     login_with_oauth
     post_via_redirect "/recipes", {

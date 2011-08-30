@@ -21,12 +21,12 @@
   </div>
   
   <% f.fields_for :steps do |builder| %>  
-  <div>  
-    <%= builder.label :instructions, "Step" %><br />  
-    <%= builder.text_area :instructions, :rows => 3 %>  
-  </div>  
-  <div>  
-    <%= builder.hidden_field :step %>  
+  <div class="field">  
+    <%= builder.label :instructions, "Step" %>
+    <%= builder.hidden_field :step %>
+    <%= builder.text_area :instructions, :rows => 3 %> 
+    <%= builder.hidden_field :_destroy %>  
+    <%= link_to_function "remove", "remove_fields(this)" %>  
   </div>
   <% end %>
   
