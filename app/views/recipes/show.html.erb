@@ -10,6 +10,14 @@
   <%= @recipe.description %>
 </p>
 
+<p>
+  <b>Steps:</b>
+  </br>
+  <% @recipe.steps.each do |step| %>
+    <%= step.instructions %></br>
+  <% end %>
+</p>
+
 <% if current_user %>
   <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <% end %>

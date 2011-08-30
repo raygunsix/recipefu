@@ -19,8 +19,10 @@ feature "Recipes", %q{
 
   scenario "show a recipe" do
     @recipe.save
+    @step.save
     visit "/recipes/" + @recipe.id.to_s
     page.should have_content(@recipe.title)
+    page.should have_content(@step.instructions)
   end
 
   scenario "add a new recipe" do
