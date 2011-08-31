@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Recipe do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  it "should require a title" do
+    recipe = Factory.build(:recipe, :title => "")
+    recipe.should_not be_valid
+  end
+  
 end
