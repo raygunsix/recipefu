@@ -17,6 +17,7 @@ gem 'heroku'
 gem 'jquery-rails'
 gem 'omniauth', "~> 0.2.6"
 gem 'pg'
+gem 'nested_form'
 
 group :development, :test do
   gem 'rspec-rails'
