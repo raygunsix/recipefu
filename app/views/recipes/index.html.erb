@@ -1,4 +1,8 @@
-<h1>Listing recipes</h1>
+<% content_for :page_title do %>
+  Listing recipes
+<% end %>
+
+<div id="" class="padding">
 
 <table>
 
@@ -18,3 +22,5 @@
 <% if current_user %>
   <%= link_to 'New Recipe', new_recipe_path %>
 <% end %>
+
+</div>

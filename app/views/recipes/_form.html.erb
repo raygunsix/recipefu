@@ -12,25 +12,29 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => "text_field" %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.label :description %>
+    <%= f.text_field :description, :class => "text_field" %>
   </div>
   
   <% f.fields_for :steps do |builder| %>  
   <div class="field">  
     <%= builder.label :instructions, "Step" %>
-    <%= builder.text_area :instructions, :rows => 3 %>  
+    <%= builder.text_area :instructions, :class => "text_field" %>  
     <%= builder.link_to_remove "remove" %>  
   </div>
   <% end %>
   
-  <p><%= f.link_to_add "add step", :steps %></p>
+  </br>
   
-  <div class="actions">
+  <%= f.link_to_add "add step", :steps %>
+  
+  </br>
+  
+  <div class="send_form actions">
     <%= f.submit %>
   </div>
 <% end %>
