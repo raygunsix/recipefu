@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @amount.quantity %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @amount.size %>
+</p>
+
+<p>
+  <b>Recipe:</b>
+  <%= @amount.recipe_id %>
+</p>
+
+<p>
+  <b>Ingredients:</b>
+  <%= @amount.ingredients_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_amount_path(@amount) %> |
+<%= link_to 'Back', amounts_path %>

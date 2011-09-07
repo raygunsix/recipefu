@@ -1,0 +1,33 @@
+<%= form_for(@amount) do |f| %>
+  <% if @amount.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@amount.errors.count, "error") %> prohibited this amount from being saved:</h2>
+
+      <ul>
+      <% @amount.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :quantity %><br />
+    <%= f.text_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :size %><br />
+    <%= f.text_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :recipe_id %><br />
+    <%= f.text_field :recipe_id %>
+  </div>
+  <div class="field">
+    <%= f.label :ingredients_id %><br />
+    <%= f.text_field :ingredients_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

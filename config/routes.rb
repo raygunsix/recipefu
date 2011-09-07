@@ -1,4 +1,6 @@
 Recipefoo::Application.routes.draw do
+  resources :amounts
+
   root :to => "recipes#index"
   
   match "/auth/:provider/callback" => "sessions#create"
