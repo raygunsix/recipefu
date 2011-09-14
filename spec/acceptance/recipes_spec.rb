@@ -9,6 +9,8 @@ feature "Recipes", %q{
   before(:each) do
     @recipe = Factory.build(:recipe, :user_id => 1)
     @step = Factory.build(:step, :recipe_id => 1)
+    @amount = Factory.build(:amount, :recipe_id => 1)
+    @ingredient = Factory.build(:ingredient)
   end
 
   scenario "list recipes" do
@@ -20,9 +22,13 @@ feature "Recipes", %q{
   scenario "show a recipe" do
     @recipe.save
     @step.save
+    @amount.save
+    @ingredient.save
     visit "/recipes/" + @recipe.id.to_s
     page.should have_content(@recipe.title)
     page.should have_content(@step.instructions)
+    page.should have_content(@amount.size)
+    page.should have_content(@ingredient.name)
   end
 
   scenario "add a new recipe" do
@@ -31,6 +37,9 @@ feature "Recipes", %q{
     fill_in "Title", :with => @recipe.title
     fill_in "Description", :with => @recipe.description
     fill_in "Step", :with => @step.instructions
+    fill_in "Quantity", :with => @amount.quantity
+    fill_in "Size", :with => @amount.size
+    fill_in "Ingredient", :with => @ingredient.name
     click_on "Create Recipe"
     page.should have_content(@recipe.title)
     page.should have_content("Recipe was successfully created.")
@@ -42,8 +51,10 @@ feature "Recipes", %q{
     visit "/recipes/" + @recipe.id.to_s + "/edit"
     fill_in "Title", :with => "Rabbit Stew"
     fill_in "Description", :with => "This is the best stew ever"
+    #fill_in "Quantity", :with => 4
     click_on "Update Recipe"
     page.should have_content("Rabbit Stew")
+    #page.should have_content("4")
     page.should have_content("Recipe was successfully updated.")
   end
 
@@ -52,7 +63,10 @@ feature "Recipes", %q{
     post_via_redirect "/recipes", {
       :title => @recipe.title, 
       :description => @recipe.description, 
-      :step => @step.instructions
+      :step => @step.instructions,
+      :quantity => @amount.quantity,
+      :size => @amount.size,
+      :ingredient => @ingredient.name
     }
     response.status.should be(200)
     #page.should have_content("Recipe was successfully created.")
@@ -63,7 +77,10 @@ feature "Recipes", %q{
     login_with_oauth
     put_via_redirect "/recipes/" + @recipe.id.to_s, {
       :title => "Chicken Soup Extreme",
-      :description => @recipe.description,
+      :description => "So Extreme",
+      :quantity => 8,
+      :size => "gallons",
+      :ingredient => "hot sauce"
     }
     response.status.should be(200)
     #page.should have_content("Recipe was successfully updated.")

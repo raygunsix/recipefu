@@ -24,6 +24,22 @@
   <% end %>
 </p>
 
+<p>
+  <b>Amounts:</b>
+  </br>
+  <% @recipe.amounts.each do |amount| %>
+    <%= amount.quantity %> <%= amount.size %></br>
+  <% end %>
+</p>
+
+<p>
+  <b>Ingredients:</b>
+  </br>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <%= ingredient.name %></br>
+  <% end %>
+</p>
+
 <% if current_user %>
   <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <% end %>

@@ -27,7 +27,12 @@ class RecipesController < ApplicationController
   # GET /recipes/new.xml
   def new
     @recipe = Recipe.new
-    3.times {|i| @recipe.steps.build.step = i}   
+    
+    # ugly...
+    3.times {|i|
+      @recipe.steps.build.step
+      @recipe.amounts.build
+    }
     
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +49,9 @@ class RecipesController < ApplicationController
   # POST /recipes.xml
   def create
 
-    @recipe = current_user.recipes.build(params[:recipe])
+    @recipe = current_user.recipes.new(params[:recipe])
+
+    @recipe = Recipe.new(params[:recipe])
 
     respond_to do |format|
       if @recipe.save

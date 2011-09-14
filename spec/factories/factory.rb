@@ -17,4 +17,13 @@ FactoryGirl.define do
     instructions "Boil water"
   end
 
+  factory :amount do
+    quantity 1
+    size "pot"
+  end
+
+  factory :ingredient do
+    name "water"
+  end
+
 end

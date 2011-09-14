@@ -1,4 +1,4 @@
-<%= nested_form_for @recipe do |f| %>
+<%= nested_form_for(@recipe) do |f| %>
   <% if @recipe.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
@@ -19,21 +19,39 @@
     <%= f.label :description %>
     <%= f.text_field :description, :class => "text_field" %>
   </div>
-  
-  <% f.fields_for :steps do |builder| %>  
-  <div class="field">  
-    <%= builder.label :instructions, "Step" %>
-    <%= builder.text_area :instructions, :class => "text_field" %>  
-    <%= builder.link_to_remove "remove" %>  
-  </div>
-  <% end %>
-  
-  </br>
-  
-  <%= f.link_to_add "add step", :steps %>
-  
-  </br>
-  
+ 
+  <% f.fields_for :steps do |ff| %>  
+   <div class="field">  
+     <%= ff.label :instructions, "Step" %>
+     <%= ff.text_area :instructions, :class => "text_field" %>  
+     <%= ff.link_to_remove "remove" %>  
+   </div>
+   <% end %>
+
+   </br>
+
+   <%= f.link_to_add "add step", :steps %>
+
+   </br>
+
+   <% f.fields_for :amounts do |ff| %>  
+     <div class="field">  
+       <%= ff.label :quantity, "Quantity" %>
+       <%= ff.text_area :quantity, :class => "text_field" %>  
+     </div>
+     <div class="field">  
+       <%= ff.label :size, "Size" %>
+       <%= ff.text_area :size, :class => "text_field" %>   
+     </div>
+     <div class="field">   
+       <%= ff.label :ingredient_name, "Ingredient" %>
+       <%= ff.text_field :ingredient_name, :class => "text_field" %>
+     </div>
+     </br>
+     <%= ff.link_to_remove "remove" %> 
+   <% end %>
+ 
+ 
   <div class="send_form actions">
     <%= f.submit %>
   </div>
