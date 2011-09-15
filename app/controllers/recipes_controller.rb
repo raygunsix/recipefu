@@ -28,11 +28,9 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     
-    # ugly...
-    3.times {|i|
-      @recipe.steps.build.step
-      @recipe.amounts.build
-    }
+    @recipe.steps.build
+    @recipe.amounts.build
+    @recipe.ingredients.build
     
     respond_to do |format|
       format.html # new.html.erb
