@@ -49,8 +49,6 @@ class RecipesController < ApplicationController
 
     @recipe = current_user.recipes.new(params[:recipe])
 
-    @recipe = Recipe.new(params[:recipe])
-
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to(@recipe, :notice => 'Recipe was successfully created.') }
