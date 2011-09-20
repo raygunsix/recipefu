@@ -28,7 +28,6 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     
-    @recipe.steps.build
     @recipe.amounts.build
     @recipe.ingredients.build
     

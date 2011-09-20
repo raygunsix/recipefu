@@ -14,10 +14,6 @@ FactoryGirl.define do
     instructions "Boil water and then turn on oven. Ready when smoke alarm sound."
   end
 
-  factory :step do
-    instructions "Boil water"
-  end
-
   factory :amount do
     quantity 1
     size "pot"

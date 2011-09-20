@@ -23,18 +23,6 @@
     <%= f.label :instructions %>
     <%= f.text_area :instructions, :class => "text_field" %>
   </div>
-   
-  <% f.fields_for :steps do |ff| %>  
-   <div class="field">  
-     <%= ff.label :instructions, "Step" %>
-     <%= ff.text_area :instructions, :class => "text_field" %>  
-     <%= ff.link_to_remove "remove" %>  
-   </div>
-   <% end %>
-
-   </br>
-
-   <%= f.link_to_add "add step", :steps %>
 
    </br>
 

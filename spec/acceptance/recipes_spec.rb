@@ -8,7 +8,6 @@ feature "Recipes", %q{
 
   before(:each) do
     @recipe = Factory.build(:recipe, :user_id => 1)
-    @step = Factory.build(:step, :recipe_id => 1)
     @amount = Factory.build(:amount, :recipe_id => 1)
     @ingredient = Factory.build(:ingredient)
   end
@@ -21,13 +20,11 @@ feature "Recipes", %q{
 
   scenario "show a recipe" do
     @recipe.save
-    @step.save
     @amount.save
     @ingredient.save
     visit "/recipes/" + @recipe.id.to_s
     page.should have_content(@recipe.title)
     page.should have_content(@recipe.instructions)
-    page.should have_content(@step.instructions)
     page.should have_content(@amount.size)
     page.should have_content(@ingredient.name)
   end
@@ -38,7 +35,6 @@ feature "Recipes", %q{
     fill_in "Title", :with => @recipe.title
     fill_in "Description", :with => @recipe.description
     fill_in "Instructions", :with => @recipe.instructions
-    fill_in "Step", :with => @step.instructions
     fill_in "Quantity", :with => @amount.quantity
     fill_in "Size", :with => @amount.size
     fill_in "Ingredient", :with => @ingredient.name
@@ -68,7 +64,6 @@ feature "Recipes", %q{
       :title => @recipe.title, 
       :description => @recipe.description, 
       :instructions => @recipe.instructions,
-      :step => @step.instructions,
       :quantity => @amount.quantity,
       :size => @amount.size,
       :ingredient => @ingredient.name
