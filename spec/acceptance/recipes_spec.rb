@@ -3,7 +3,7 @@ require "spec_helper"
 feature "Recipes", %q{
   In order to plan my meals
   As an user
-  I want to create and manage recipes
+  I want to
 } do
 
   before(:each) do
@@ -26,6 +26,7 @@ feature "Recipes", %q{
     @ingredient.save
     visit "/recipes/" + @recipe.id.to_s
     page.should have_content(@recipe.title)
+    page.should have_content(@recipe.instructions)
     page.should have_content(@step.instructions)
     page.should have_content(@amount.size)
     page.should have_content(@ingredient.name)
@@ -36,6 +37,7 @@ feature "Recipes", %q{
     visit "/recipes/new"
     fill_in "Title", :with => @recipe.title
     fill_in "Description", :with => @recipe.description
+    fill_in "Instructions", :with => @recipe.instructions
     fill_in "Step", :with => @step.instructions
     fill_in "Quantity", :with => @amount.quantity
     fill_in "Size", :with => @amount.size
@@ -51,11 +53,13 @@ feature "Recipes", %q{
     visit "/recipes/" + @recipe.id.to_s + "/edit"
     fill_in "Title", :with => "Rabbit Stew"
     fill_in "Description", :with => "This is the best stew ever"
+    fill_in "Instructions", :with => "Forget it. Order take out."
     #fill_in "Quantity", :with => 4
     click_on "Update Recipe"
     page.should have_content("Rabbit Stew")
     #page.should have_content("4")
     page.should have_content("Recipe was successfully updated.")
+    page.should have_content("Forget it. Order take out.")
   end
 
   scenario "create a recipe" do
@@ -63,6 +67,7 @@ feature "Recipes", %q{
     post_via_redirect "/recipes", {
       :title => @recipe.title, 
       :description => @recipe.description, 
+      :instructions => @recipe.instructions,
       :step => @step.instructions,
       :quantity => @amount.quantity,
       :size => @amount.size,
@@ -78,6 +83,7 @@ feature "Recipes", %q{
     put_via_redirect "/recipes/" + @recipe.id.to_s, {
       :title => "Chicken Soup Extreme",
       :description => "So Extreme",
+      :instructions => "Broil for 1 hour",
       :quantity => 8,
       :size => "gallons",
       :ingredient => "hot sauce"

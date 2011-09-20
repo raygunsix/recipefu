@@ -19,7 +19,11 @@
     <%= f.label :description %>
     <%= f.text_field :description, :class => "text_field" %>
   </div>
- 
+  <div class="field">
+    <%= f.label :instructions %>
+    <%= f.text_area :instructions, :class => "text_field" %>
+  </div>
+   
   <% f.fields_for :steps do |ff| %>  
    <div class="field">  
      <%= ff.label :instructions, "Step" %>

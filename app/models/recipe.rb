@@ -1,6 +1,6 @@
 class Recipe < ActiveRecord::Base
   
-  attr_accessible :title, :description, :steps_attributes, :amounts_attributes
+  attr_accessible :title, :description, :instructions, :steps_attributes, :amounts_attributes
   
   validates :title, :presence => true
   
