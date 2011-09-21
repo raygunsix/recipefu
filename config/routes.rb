@@ -5,7 +5,8 @@ Recipefoo::Application.routes.draw do
   
   match "/auth/:provider/callback" => "sessions#create"
   
-  match "/signout" => "sessions#destroy", :as => :signout 
+  match "/login" => "sessions#login", :as => :login 
+  match "/logout" => "sessions#destroy", :as => :logout 
   
   resources :recipes
 
