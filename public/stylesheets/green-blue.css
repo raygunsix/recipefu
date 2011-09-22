@@ -1,4 +1,6 @@
-a { color: #53AA6B; }
+a { color: #000; }
+a:visited { color: #666; }
+
 div#page .header .price_tag{ 
 	background: url('../images/themes/green-blue/price_tag.png') no-repeat top;
 }
