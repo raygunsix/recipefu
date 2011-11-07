@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(:version => 20110920043356) do
     t.integer  "ingredient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "ingredient"
   end
 
   create_table "ingredients", :force => true do |t|
