@@ -37,5 +37,7 @@ Capybara.default_host = 'http://127.0.0.1'
 OmniAuth.config.test_mode = true
 OmniAuth.config.add_mock(:twitter, {
   :uid => '67354',
-  :name => 'Bob Gainey'
+  :user_info => {
+    :name => 'Bob Gainey',
+    :nickname => 'bob.gainey1'},
 })

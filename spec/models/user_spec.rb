@@ -18,6 +18,11 @@ describe User do
       user = Factory.build(:user, :uid => "")
       user.should_not be_valid
     end
+
+    it "should require a nickname" do
+      user = Factory.build(:user, :nickname => "")
+      user.should_not be_valid
+    end
   
   end
   
@@ -35,7 +40,8 @@ describe User do
       			"app_secret" => "f2gt66yh4ed75dbd498752j87fdee013", 
       			"uid"=>"54321", 
             "user_info"=> {
-      					"name"=>"Test User"
+      					"name" => "Test User",
+                                        "nickname" => "Nick Name"
       				}
         }
       end
@@ -45,6 +51,7 @@ describe User do
         user.provider.should == @valid_auth["provider"]  
         user.uid.should == @valid_auth["uid"]  
         user.name.should == @valid_auth["user_info"]["name"]
+        user.nickname.should == @valid_auth["user_info"]["nickname"]
       end
     end
     

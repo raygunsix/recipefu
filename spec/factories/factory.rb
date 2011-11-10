@@ -6,6 +6,7 @@ FactoryGirl.define do
 	  provider "twitter"
 	  uid "0000"
 	  name "Guy Lafleur"
+          nickname "guylafleur37"
   end
 	
   factory :recipe do
