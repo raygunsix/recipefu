@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   validates :name, :presence => true
   validates :uid, :presence => true
   validates :provider, :presence => true
-  validates :nickname, :presence => true
+  validates :nickname, :presence => true, :uniqueness => true
  
   has_many :recipes, :dependent => :destroy
   

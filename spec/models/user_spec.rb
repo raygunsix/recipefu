@@ -23,9 +23,16 @@ describe User do
       user = Factory.build(:user, :nickname => "")
       user.should_not be_valid
     end
-  
+ 
+    it "should require a unique nickname" do
+      user = Factory.create(:user, :nickname => "homer")
+      expect {
+        user2 = Factory.create(:user, :nickname => "homer")
+      }.should raise_error(ActiveRecord::RecordInvalid)
+    end    
+ 
   end
-  
+
   describe "#create_with_omniauth" do
     it "should exist" do
       User.should respond_to(:create_with_omniauth)
