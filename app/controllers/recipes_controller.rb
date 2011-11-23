@@ -50,7 +50,7 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to(@recipe, :notice => 'Recipe was successfully created.') }
+        format.html { redirect_to(user_recipe_path(current_user.id, @recipe), :notice => 'Recipe was successfully created.') }
         format.xml  { render :xml => @recipe, :status => :created, :location => @recipe }
       else
         format.html { render :action => "new" }
@@ -66,7 +66,7 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.update_attributes(params[:recipe])
-        format.html { redirect_to(@recipe, :notice => 'Recipe was successfully updated.') }
+        format.html { redirect_to(user_recipe_path(current_user.id, @recipe), :notice => 'Recipe was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -82,7 +82,7 @@ class RecipesController < ApplicationController
     @recipe.destroy
 
     respond_to do |format|
-      format.html { redirect_to(recipes_url) }
+      format.html { redirect_to(user_recipes_url) }
       format.xml  { head :ok }
     end
   end
