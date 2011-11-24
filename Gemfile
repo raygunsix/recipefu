@@ -18,6 +18,7 @@ gem 'jquery-rails'
 gem 'omniauth', "~> 0.2.6"
 gem 'pg'
 gem 'nested_form'
+gem 'friendly_id', '~> 3.3'
 
 group :development, :test do
   gem 'rspec-rails'
