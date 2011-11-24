@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111110224448) do
+ActiveRecord::Schema.define(:version => 20111124054516) do
 
   create_table "amounts", :force => true do |t|
     t.integer  "quantity"
@@ -36,7 +36,22 @@ ActiveRecord::Schema.define(:version => 20111110224448) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.text     "instructions"
+    t.string   "cached_slug"
   end
+
+  add_index "recipes", ["user_id", "cached_slug"], :name => "index_recipes_on_user_id_and_cached_slug", :unique => true
+
+  create_table "slugs", :force => true do |t|
+    t.string   "name"
+    t.integer  "sluggable_id"
+    t.integer  "sequence",                     :default => 1, :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
+  add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "users", :force => true do |t|
     t.string   "provider"
@@ -45,6 +60,9 @@ ActiveRecord::Schema.define(:version => 20111110224448) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "nickname"
+    t.string   "cached_slug"
   end
+
+  add_index "users", ["cached_slug"], :name => "index_users_on_cached_slug", :unique => true
 
 end

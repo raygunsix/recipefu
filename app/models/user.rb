@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   validates :uid, :presence => true
   validates :provider, :presence => true
   validates :nickname, :presence => true, :uniqueness => true
+
+  has_friendly_id :nickname, :use_slug => true
  
   has_many :recipes, :dependent => :destroy
   
