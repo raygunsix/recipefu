@@ -1,17 +1,18 @@
 Recipefoo::Application.routes.draw do
   resources :amounts
 
-  resources :users do
+  match "/auth/:provider/callback" => "sessions#create"
+
+  root :to => "recipes#index"
+
+  match "/login" => "sessions#login", :as => :login 
+
+  match "/logout" => "sessions#destroy", :as => :logout 
+
+  resources :users, :path => '' do
     resources :recipes
   end  
 
-  root :to => "recipes#index"
-  
-  match "/auth/:provider/callback" => "sessions#create"
-  
-  match "/login" => "sessions#login", :as => :login 
-  match "/logout" => "sessions#destroy", :as => :logout 
-  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

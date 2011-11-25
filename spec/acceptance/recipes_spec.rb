@@ -14,7 +14,7 @@ feature "Recipes", %q{
 
   scenario "list recipes" do
     @recipe.save
-    visit "/users/1/recipes"
+    visit "/guylafleur/recipes"
     page.should have_content(@recipe.title)
   end
 
@@ -22,7 +22,7 @@ feature "Recipes", %q{
     @recipe.save
     @amount.save
     @ingredient.save
-    visit "/users/1/recipes/" + @recipe.id.to_s
+    visit "/guylafleur/recipes/" + @recipe.cached_slug
     page.should have_content(@recipe.title)
     page.should have_content(@recipe.instructions)
     page.should have_content(@amount.size)
@@ -31,7 +31,7 @@ feature "Recipes", %q{
 
   scenario "add a new recipe" do
     login_with_oauth
-    visit "/users/1/recipes/new"
+    visit "/guylafleur/recipes/new"
     fill_in "Title", :with => @recipe.title
     fill_in "Description", :with => @recipe.description
     fill_in "Instructions", :with => @recipe.instructions
@@ -46,7 +46,7 @@ feature "Recipes", %q{
   scenario "edit a recipe" do
     @recipe.save
     login_with_oauth
-    visit "/users/1/recipes/" + @recipe.id.to_s + "/edit"
+    visit "/guylafleur/recipes/" + @recipe.cached_slug + "/edit"
     fill_in "Title", :with => "Rabbit Stew"
     fill_in "Description", :with => "This is the best stew ever"
     fill_in "Instructions", :with => "Forget it. Order take out."
@@ -60,7 +60,7 @@ feature "Recipes", %q{
 
   scenario "create a recipe" do
     login_with_oauth
-    post_via_redirect "/users/1/recipes", {
+    post_via_redirect "/guylafleur/recipes", {
       :title => @recipe.title, 
       :description => @recipe.description, 
       :instructions => @recipe.instructions,
@@ -75,7 +75,7 @@ feature "Recipes", %q{
   scenario "should update an existing recipe" do
     @recipe.save
     login_with_oauth
-    put_via_redirect "/users/1/recipes/" + @recipe.id.to_s, {
+    put_via_redirect "/guylafleur/recipes/" + @recipe.cached_slug, {
       :title => "Chicken Soup Extreme",
       :description => "So Extreme",
       :instructions => "Broil for 1 hour",
@@ -90,7 +90,7 @@ feature "Recipes", %q{
   scenario "should delete an existing recipe" do
     @recipe.save
     login_with_oauth
-    delete_via_redirect "/users/1/recipes/" + @recipe.id.to_s
+    delete_via_redirect "/guylafleur/recipes/" + @recipe.cached_slug
     page.should have_content("Chicken Soup")
   end
 
