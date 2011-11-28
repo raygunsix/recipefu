@@ -7,7 +7,7 @@ FactoryGirl.define do
     uid "0000"
     name "Guy Lafleur"
     nickname "guylafleur"
-    cached_slug "guylafleaur"
+    cached_slug "guylafleur"
   end
 	
   factory :recipe do
