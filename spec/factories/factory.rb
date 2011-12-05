@@ -15,6 +15,7 @@ FactoryGirl.define do
     description "Mom's chicken soup recipe. It was my favorite when I was 12."
     instructions "Boil water and then turn on oven. Ready when smoke alarm sound."
     cached_slug "chicken-soup"
+    association :user, :factory => :user
   end
 
   factory :amount do

@@ -7,9 +7,17 @@ feature "Recipes", %q{
 } do
 
   before(:each) do
-    @recipe = Factory.build(:recipe, :user_id => 1)
-    @amount = Factory.build(:amount, :recipe_id => 1)
+    @recipe = Factory.build(:recipe)
     @ingredient = Factory.build(:ingredient)
+    @amount = Factory.build(:amount)
+
+    OmniAuth.config.add_mock(:twitter, {
+      :uid => @recipe.user.uid,
+      :user_info => {
+      :name => @recipe.user.name,
+      :nickname => @recipe.user.nickname},
+    })
+
   end
 
   scenario "list recipes" do
@@ -19,14 +27,14 @@ feature "Recipes", %q{
   end
 
   scenario "show a recipe" do
+    @recipe.ingredients << @ingredient
+    @recipe.amounts << Factory(:amount, :ingredient_id => Factory(:ingredient))
     @recipe.save
-    @amount.save
-    @ingredient.save
     visit "/guylafleur/recipes/" + @recipe.cached_slug
     page.should have_content(@recipe.title)
     page.should have_content(@recipe.instructions)
-    page.should have_content(@amount.size)
-    page.should have_content(@ingredient.name)
+    page.should have_content(@recipe.amounts[0].size)
+    page.should have_content(@recipe.ingredients[0].name)
   end
 
   scenario "add a new recipe" do
@@ -36,7 +44,7 @@ feature "Recipes", %q{
     fill_in "Description", :with => @recipe.description
     fill_in "Instructions", :with => @recipe.instructions
     fill_in "Quantity", :with => @amount.quantity
-    fill_in "Size", :with => @amount.size
+    fill_in "Size", :with => @amount.size 
     fill_in "Ingredient", :with => @ingredient.name
     click_on "Create Recipe"
     page.should have_content(@recipe.title)
@@ -72,7 +80,7 @@ feature "Recipes", %q{
     #page.should have_content("Recipe was successfully created.")
   end
 
-  scenario "should update an existing recipe" do
+  scenario "update an existing recipe" do
     @recipe.save
     login_with_oauth
     put_via_redirect "/guylafleur/recipes/" + @recipe.cached_slug, {
@@ -87,10 +95,11 @@ feature "Recipes", %q{
     #page.should have_content("Recipe was successfully updated.")
   end  
 
-  scenario "should delete an existing recipe" do
+  scenario "delete an existing recipe" do
     @recipe.save
     login_with_oauth
     delete_via_redirect "/guylafleur/recipes/" + @recipe.cached_slug
+    visit "/guylafleur/recipes"
     page.should have_content("Chicken Soup")
   end
 

@@ -4,7 +4,10 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.xml
   def index
-    @recipes = Recipe.all
+
+    @user = User.find(params[:user_id])
+
+    @recipes = Recipe.where(:user_id => @user.id)
 
     respond_to do |format|
       format.html # index.html.erb

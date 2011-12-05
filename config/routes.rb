@@ -3,7 +3,7 @@ Recipefoo::Application.routes.draw do
 
   match "/auth/:provider/callback" => "sessions#create"
 
-  root :to => "recipes#index"
+  root :to => "static#index"
 
   match "/login" => "sessions#login", :as => :login 
 

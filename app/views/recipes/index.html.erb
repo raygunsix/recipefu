@@ -8,11 +8,11 @@
 
   <% @recipes.each do |recipe| %>
     <tr>
-      <td><%= link_to recipe.title, user_recipe_path(:user_id => recipe.user_id, :id => recipe.id) %></td>
+      <td><%= link_to recipe.title, user_recipe_path(:user_id => @user.cached_slug, :id => recipe.cached_slug) %></td>
 
       <% if current_user %>
-        <td><%= link_to 'Edit', edit_user_recipe_path(:user_id => current_user.id, :id => recipe.id) %></td>
-        <td><%= link_to 'Destroy', user_recipe_path(:user_id => current_user.id, :id => recipe.id), :confirm => 'Are you sure?', :method => :delete %></td>
+        <td><%= link_to 'Edit', edit_user_recipe_path(:user_id => current_user.cached_slug, :id => recipe.cached_slug) %></td>
+        <td><%= link_to 'Destroy', user_recipe_path(:user_id => current_user.cached_slug, :id => recipe.cached_slug), :confirm => 'Are you sure?', :method => :delete %></td>
       <% end %>
 
     </tr>
@@ -23,7 +23,7 @@
   <br />
 
   <% if current_user %>
-    <%= link_to 'New Recipe', new_user_recipe_path(:user_id => current_user.id) %>
+    <%= link_to 'New Recipe', new_user_recipe_path(:user_id => current_user.cached_slug) %>
   <% end %>
   
 </div>
