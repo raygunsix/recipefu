@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.10'
-gem 'sqlite3'
 gem 'heroku'
 
 # Deploy with Capistrano
@@ -27,4 +26,9 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'factory_girl_rails'
+  gem 'sqlite3' 
+end
+
+group :production do
+  gem 'pg'
 end
