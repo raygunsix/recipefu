@@ -53,7 +53,7 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to(user_recipe_path(current_user.id, @recipe), :notice => 'Recipe was successfully created.') }
+        format.html { redirect_to(user_recipe_path(current_user.cached_slug, @recipe), :notice => 'Recipe was successfully created.') }
         format.xml  { render :xml => @recipe, :status => :created, :location => @recipe }
       else
         format.html { render :action => "new" }
