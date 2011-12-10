@@ -9,29 +9,29 @@
 <body>
 
 <div id="header">
-	<div class="page">
+  <div class="page">
 		
-		<a href="/" class="logo">Recipefu</a>
-		
-		<div id="user_nav" style="float:right">  
-      <% if current_user %>  
-        Welcome, <%= current_user.name %>!  
-        <%= link_to "Log Out", logout_path %>  
-      <% else %>  
-        <%= link_to "Log In", login_path %>  
-      <% end %>  
+    <%= link_to "Home", root_path, :class => "logo" %>
+
+    <div id="user_nav" style="float:right">  
+    
+    <% if current_user %>  
+      Welcome, <%= current_user.name %>!  
+      <%= link_to "Log Out", logout_path %>  
+    <% else %>  
+      <%= link_to "Log In", login_path %>  
+    <% end %>  
+    
     </div>
 		
-    <!-- <ul>
-      <li><a href="index.html">Home</a></li>
-      <li class="active"><a href="about.html">About</a></li>
-      <li><a href="tour.html">Tour</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul> -->
-		<div class="clear"></div>
-	</div>
+    <ul>
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "My Recipes", user_recipes_path(:user_id => current_user.cached_slug) %></li>
+      <!-- li class="active"><a href="about.html">About</a></li -->
+    </ul> 
+   
+    <div class="clear"></div>
+  </div>
 </div>
 
 <div id="page">
