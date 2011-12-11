@@ -24,31 +24,28 @@
     <%= f.text_area :instructions, :class => "text_field" %>
   </div>
 
-   </br>
-
    <% f.fields_for :amounts do |ff| %>  
-     <div class="field">  
+     <div class="field form_align">  
        <%= ff.label :quantity, "Quantity" %>
-       <%= ff.text_area :quantity, :class => "text_field" %>  
+       <%= ff.text_field :quantity, :class => "text_field_small" %>  
      </div>
-     <div class="field">  
+     <div class="field form_align">  
        <%= ff.label :size, "Size" %>
-       <%= ff.text_area :size, :class => "text_field" %>   
+       <%= ff.text_field :size, :class => "text_field_small" %>   
      </div>
      <div class="field">   
        <%= ff.label :ingredient_name, "Ingredient" %>
        <%= ff.text_field :ingredient_name, :class => "text_field" %>
+       <%= ff.link_to_remove "remove" %>
      </div>
-     </br>
-     <%= ff.link_to_remove "remove" %> 
    <% end %>
 
-   </br>
+   </br></br>
 
    <%= f.link_to_add "add ingredient", :amounts %>
 
    </br>
- 
+
   <div class="send_form actions">
     <%= f.submit %>
   </div>

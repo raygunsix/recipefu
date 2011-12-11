@@ -482,6 +482,12 @@ div#blog {}
 		font-size: 12px;
 	}
 /*--------------------------------------------
+Recipe
+---------------------------------------------*/
+
+.form_align { float: left; margin-right: 10px; }
+
+/*--------------------------------------------
 HTML Elements
 ---------------------------------------------*/
 div#html_elements h1, h2, h3, h4, h5, h6 { margin-bottom: 5px; }
@@ -558,6 +564,21 @@ form .text_field{
 	font-style: italic;
 	color: #999;
 }
+
+form .text_field_small{
+	padding: 10px;
+	border: 1px solid #d6d6d6;
+	background: #fff url('../images/tf_bg.gif') repeat-x top;
+	font-size: 13px;
+	font-style: italic;
+	color: #999;
+        /* not sure why we need to add this? */
+        border-top-left-radius: 8px 8px;
+        border-top-right-radius: 8px 8px;
+        border-bottom-right-radius: 8px 8px;
+        border-bottom-left-radius: 8px 8px;
+}
+
 form .default_text_active {
 	font-style: normal;
 	color: #777;
@@ -579,6 +600,8 @@ form label {
 }
 form input.text_field,
 form select { width: 248px; }
+form input.text_field_small,
+form select { width: 38px; }
 form textarea { width: 470px; height: 50px; font-size: 13px; }
 form .send_form {
 	float: right;
