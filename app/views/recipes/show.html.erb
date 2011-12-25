@@ -1,46 +1,60 @@
-<% content_for :page_title do %>
-  Recipe
-<% end %>
+<div id="page">
+			
+<div class="top"></div>
 
-<div id="" class="padding">
+  <div class="content">
+		
+    <div class="header page">
+	    <h1>Show recipe</h1>
+      <!-- <ul>
+        <li class="active"><a href="html_elements.html">HTML Elements</a></li>
+        <li><a href="2_column.html">2 Column</a></li>
+      </ul> -->
+    </div>
+
+    <div id="" class="padding">
   
-<p id="notice"><%= notice %></p>
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @recipe.title %>
-</p>
+    <p>
+      <b>Title:</b>
+      <%= @recipe.title %>
+    </p>
+    <p>
+      <b>Description:</b>
+      <%= @recipe.description %>
+    </p>
+    <p>
+      <b>Instructions:</b>
+      <%= @recipe.instructions %>
+    </p>
+    <p>
+      <b>Amounts:</b>
+      </br>
+      <% @recipe.amounts.each do |amount| %>
+        <%= amount.quantity %> <%= amount.size %></br>
+      <% end %>
+    </p>
+    <p>
+      <b>Ingredients:</b>
+      </br>
+      <% @recipe.ingredients.each do |ingredient| %>
+        <%= ingredient.name %></br>
+      <% end %>
+    </p>
 
-<p>
-  <b>Description:</b>
-  <%= @recipe.description %>
-</p>
+    <% if current_user %>
+      <%= link_to 'Edit', edit_user_recipe_path(@recipe) %> |
+    <% end %>
 
-<p>
-  <b>Instructions:</b>
-  <%= @recipe.instructions %>
-</p>
+    <%= link_to 'Back', user_recipes_path %>
 
-<p>
-  <b>Amounts:</b>
-  </br>
-  <% @recipe.amounts.each do |amount| %>
-    <%= amount.quantity %> <%= amount.size %></br>
-  <% end %>
-</p>
+    </div>
 
-<p>
-  <b>Ingredients:</b>
-  </br>
-  <% @recipe.ingredients.each do |ingredient| %>
-    <%= ingredient.name %></br>
-  <% end %>
-</p>
+    <div class="clear"></div>
 
-<% if current_user %>
-  <%= link_to 'Edit', edit_user_recipe_path(@recipe) %> |
-<% end %>
+  </div>
 
-<%= link_to 'Back', user_recipes_path %>
+  <div class="bottom"></div>
 
 </div>

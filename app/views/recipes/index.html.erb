@@ -1,29 +1,45 @@
-<% content_for :page_title do %>
-  Listing recipes
-<% end %>
+<div id="page">
+			
+  <div class="top"></div>
 
-<div id="" class="padding">
+    <div class="content">
+		
+      <div class="header page">
+  	    <h1>Listing recipe</h1>
+        <!-- <ul>
+          <li class="active"><a href="html_elements.html">HTML Elements</a></li>
+          <li><a href="2_column.html">2 Column</a></li>
+        </ul> -->
+      </div>
 
-  <table>
+      <div id="" class="padding">
 
-  <% @recipes.each do |recipe| %>
-    <tr>
-      <td><%= link_to recipe.title, user_recipe_path(:user_id => @user.cached_slug, :id => recipe.cached_slug) %></td>
+        <table>
 
-      <% if current_user %>
-        <td><%= link_to 'Edit', edit_user_recipe_path(:user_id => current_user.cached_slug, :id => recipe.cached_slug) %></td>
-        <td><%= link_to 'Destroy', user_recipe_path(:user_id => current_user.cached_slug, :id => recipe.cached_slug), :confirm => 'Are you sure?', :method => :delete %></td>
-      <% end %>
+        <% @recipes.each do |recipe| %>
+        <tr>
+          <td><%= link_to recipe.title, user_recipe_path(:user_id => @user.cached_slug, :id => recipe.cached_slug) %></td>
+          <% if current_user %>
+            <td><%= link_to 'Edit', edit_user_recipe_path(:user_id => current_user.cached_slug, :id => recipe.cached_slug) %></td>
+            <td><%= link_to 'Destroy', user_recipe_path(:user_id => current_user.cached_slug, :id => recipe.cached_slug), :confirm => 'Are you sure?', :method => :delete %></td>
+          <% end %>
+        </tr>
+        <% end %>
 
-    </tr>
-  <% end %>
+        </table>
 
-  </table>
+        <br />
 
-  <br />
-
-  <% if current_user %>
-    <%= link_to 'New Recipe', new_user_recipe_path(:user_id => current_user.cached_slug) %>
-  <% end %>
+        <% if current_user %>
+          <%= link_to 'New Recipe', new_user_recipe_path(:user_id => current_user.cached_slug) %>
+        <% end %>
   
+      </div>
+
+      <div class="clear"></div>
+  
+    </div>
+  
+    <div class="bottom"></div>
+
 </div>

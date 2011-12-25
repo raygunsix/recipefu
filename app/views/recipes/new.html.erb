@@ -1,11 +1,29 @@
-<% content_for :page_title do %>
-  New recipe
-<% end %>
+<div id="page">
+			
+<div class="top"></div>
 
-<div id="" class="padding">
+  <div class="content">
+		
+    <div class="header page">
+	    <h1>New recipe</h1>
+      <!-- <ul>
+        <li class="active"><a href="html_elements.html">HTML Elements</a></li>
+        <li><a href="2_column.html">2 Column</a></li>
+      </ul> -->
+    </div>
+
+    <div id="" class="padding">
+
+      <%= render 'form' %>
+
+      <%= link_to 'Back', user_recipes_path %>
+
+    </div>
+
+    <div class="clear"></div>
   
-<%= render 'form' %>
-
-<%= link_to 'Back', user_recipes_path %>
+  </div>
+  
+  <div class="bottom"></div>
 
 </div>
