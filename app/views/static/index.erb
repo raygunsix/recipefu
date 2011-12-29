@@ -1,11 +1,34 @@
-<% content_for :page_title do %>
-  Welcome
-<% end %>
+<div id="page">
+			
+	<div class="top"></div>
+	<div class="content">
+		
+		<div class="header header_home page">
 
-<div id="" class="padding">
+			<%= image_tag "chef.png", :class => "main_screenshot" %>
+	
+			<!-- Start App Info -->
+			<div class="info">
+				<h1>Life's Too Short to Eat Boring Food</h1>
+				<p>Love food? Want to eat something different tonight? Find great new dishes here. Save your recipes. Share them with your friends. Defeat your enemies.</p>
+       
+        <% if current_user %>
+          <%= link_to image_tag("go_icon.png") + raw("<span>Add a Recipe!</span>"), new_user_recipe_path(:user_id => current_user.cached_slug), :class => "button icon" %>
+        <% else %>
+          <%= link_to image_tag("go_icon.png") + raw("<span>Get Started!</span>"), login_path, :class => "button icon" %>
+        <% end %>
+			  
+				<span class="trial">We're currently in beta.</span>
+			</div>
+			<!-- End App Info -->
+			<div class="clear"></div>
+			
+		</div>
 
-<% if current_user %>
-  <%= link_to 'New Recipe', new_user_recipe_path(:user_id => current_user.cached_slug) %>
-<% end %>
+    <div class="clear"></div>
+
+  </div>
+
+  <div class="bottom"></div>
 
 </div>

@@ -8,8 +8,8 @@ div#page .section_title {
 	background: url('../images/themes/green-blue/section_title.gif') no-repeat top;
 }
 a.button {
-	background: url('../images/themes/green-blue/button_right.png') no-repeat top right;
+        background: url('../images/themes/green-blue/button_right.png') no-repeat top right;
 }
-	a.button span{
-		background: url('../images/themes/green-blue/button_left.png') no-repeat top left;
-	}
+a.button span{
+        background: url('../images/themes/green-blue/button_left.png') no-repeat top left;
+}

@@ -1,19 +1,35 @@
-<% content_for :page_title do %>
-  Log In
-<% end %>
+<div id="page">
+			
+  <div class="top"></div>
 
-<div id="" class="padding">
+    <div class="content">
+		
+      <div class="header page">
+  	    <h1>Login</h1>
+      </div>
 
-<p>Sign in through one of these services:</p> 
+      <div id="" class="padding">
 
-<div class="auth_provider">
-  <a href="/auth/twitter" class="auth_provider">  
-    <%= image_tag "authbuttons/twitter_64.png", :size => "64x64", :alt => "Twitter" %><br/>Twitter
-  </a>
-</div>  
+      <p>Sign in through one of these services:</p> 
 
-<div class="auth_provider">
-  <a href="/auth/facebook" class="auth_provider">  
-    <%= image_tag "authbuttons/facebook_64.png", :size => "64x64", :alt => "Facebook" %><br/>Facebook
-  </a>
+      <div class="auth_provider">
+        <a href="/auth/twitter" class="auth_provider">  
+          <%= image_tag "authbuttons/twitter_64.png", :size => "64x64", :alt => "Twitter" %><br/>Twitter
+        </a>
+      </div>  
+
+      <div class="auth_provider">
+        <a href="/auth/facebook" class="auth_provider">  
+          <%= image_tag "authbuttons/facebook_64.png", :size => "64x64", :alt => "Facebook" %><br/>Facebook
+        </a>
+      </div>
+
+      </div>
+
+      <div class="clear"></div>
+
+    </div>
+
+    <div class="bottom"></div>
+
 </div>

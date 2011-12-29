@@ -157,15 +157,15 @@ div#page {
 		}
 		div#page .header_home img.main_screenshot{ 
 			float: left;
-			padding: 20px 0px 0px 35px;
+			padding: 0px 30px 0px 30px;
 		}
-		div#page .header_home .info {
+		div#page .header_home . {
 			width: 450px;
 			float: right;
 			margin: 25px 50px 0px 0px;
 		}
 			div#page .header_home .info h1 { padding: 0; margin-bottom: 15px; font-size: 30px; color: #363636; }
-			div#page .header_home .info p{ font-size: 13px; color: #363636; margin-bottom: 30px; }
+			div#page .header_home .info p{ font-size: 13px; color: #363636; margin-bottom: 30px; margin-right: 30px; }
 			div#page .header_home .info .trial { font-size: 11px; color: #7d7d7d; margin-left: 12px; }
 	div#page .top {
 		background: url('../images/page_top.gif') no-repeat top;
@@ -612,18 +612,18 @@ form .send_form {
 Buttons
 ---------------------------------------------*/
 a.button {
-	padding: 8px 15px 10px 0px;
-	font-size: 12px;
-	color: #fff;
-	font-weight: bold;
-	text-decoration: none;
-	position: relative;
+        padding: 8px 15px 10px 0px;
+        font-size: 12px;
+        color: #fff;
+        font-weight: bold;
+        text-decoration: none;
+        position: relative;
 }
-	a.button span{
-		padding: 8px 5px 10px 20px;
-	}	
-	a.icon span{ padding-left: 40px; }
-	a.button img{ position: absolute; top: 6px; left: 11px; }
+a.button span{
+        padding: 8px 5px 10px 20px;
+}       
+a.icon span{ padding-left: 40px; }
+a.button img{ position: absolute; top: 6px; left: 11px; }
 
 /*--------------------------------------------
 Utility
