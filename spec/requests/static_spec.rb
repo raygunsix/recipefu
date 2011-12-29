@@ -20,13 +20,14 @@ describe "Static Pages" do
     it "should show a logged in user a create new recipe link" do
       login_with_oauth
       visit root_path
-      click_link "New Recipe"
+      click_link "Add a Recipe!"
       page.should have_content("New recipe")
     end
 
-    it "should not show a logged out user a create new recipe link" do
+    it "should show a logged out user a get started link" do
       visit root_path
-      page.should_not have_link("New Recipe")
+      click_link("Get Started!")
+      page.should have_content("Login")
     end
 
   end
