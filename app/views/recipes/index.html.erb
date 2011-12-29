@@ -5,11 +5,7 @@
     <div class="content">
 		
       <div class="header page">
-  	    <h1>Listing recipe</h1>
-        <!-- <ul>
-          <li class="active"><a href="html_elements.html">HTML Elements</a></li>
-          <li><a href="2_column.html">2 Column</a></li>
-        </ul> -->
+  	    <h1><%= @user.nickname %> recipes</h1>
       </div>
 
       <div id="" class="padding">
@@ -18,10 +14,10 @@
 
         <% @recipes.each do |recipe| %>
         <tr>
-          <td><%= link_to recipe.title, user_recipe_path(:user_id => @user.cached_slug, :id => recipe.cached_slug) %></td>
+          <td><h3 class="recipe_list"><%= link_to recipe.title, user_recipe_path(:user_id => @user.cached_slug, :id => recipe.cached_slug) %></td>
           <% if current_user %>
             <td><%= link_to 'Edit', edit_user_recipe_path(:user_id => current_user.cached_slug, :id => recipe.cached_slug) %></td>
-            <td><%= link_to 'Destroy', user_recipe_path(:user_id => current_user.cached_slug, :id => recipe.cached_slug), :confirm => 'Are you sure?', :method => :delete %></td>
+            <td><%= link_to 'Destroy', user_recipe_path(:user_id => current_user.cached_slug, :id => recipe.cached_slug), :confirm => 'Are you sure?', :method => :delete %></h3></td>
           <% end %>
         </tr>
         <% end %>
