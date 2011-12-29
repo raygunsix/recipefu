@@ -4,3 +4,4 @@ log/*.log
 tmp/
 config/local_env.rb
 *.swp
+.DS_Store
