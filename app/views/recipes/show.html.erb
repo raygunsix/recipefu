@@ -5,50 +5,53 @@
   <div class="content">
 		
     <div class="header page">
-	    <h1>Show recipe</h1>
+	    <h1><%= @recipe.title %></h1>
     </div>
 
     <div id="" class="padding">
   
-    <p id="notice"><%= notice %></p>
+      <div class="left">
+  
+        <% if notice %>
+        <p id="notice"><%= notice %></p>
+        <% end %>
+        
+        <p>
+          <%= @recipe.instructions %>
+        </p>
+        
+        <p>
+          <b>Ingredients</b>
+          </br>
+          <% @recipe.amounts.each do |amount| %>
+            <%= amount.quantity %> <%= amount.size %> <%= amount.ingredient.name %></br>
+          <% end %>
+        </p>
 
-    <p>
-      <b>Title:</b>
-      <%= @recipe.title %>
-    </p>
-    <p>
-      <b>Description:</b>
-      <%= @recipe.description %>
-    </p>
-    <p>
-      <b>Instructions:</b>
-      <%= @recipe.instructions %>
-    </p>
-    <p>
-      <b>Amounts:</b>
-      </br>
-      <% @recipe.amounts.each do |amount| %>
-        <%= amount.quantity %> <%= amount.size %></br>
-      <% end %>
-    </p>
-    <p>
-      <b>Ingredients:</b>
-      </br>
-      <% @recipe.ingredients.each do |ingredient| %>
-        <%= ingredient.name %></br>
-      <% end %>
-    </p>
+        <% if current_user %>
+          <%= link_to 'Edit', edit_user_recipe_path(@recipe) %> |
+        <% end %>
 
-    <% if current_user %>
-      <%= link_to 'Edit', edit_user_recipe_path(@recipe) %> |
-    <% end %>
+        <%= link_to 'Back', user_recipes_path %>
 
-    <%= link_to 'Back', user_recipes_path %>
-
-    </div>
-
-    <div class="clear"></div>
-
+      </div>
+    
+   <!-- Start Sidebar -->
+   
+      <div class="right">
+        <div class="sidebar_box">
+          <p>
+            <%= @recipe.description %>
+          </p>
+        </div>
+      </div>
+    
+      <div class="clear"></div>
+    
+    </div>        
+    
+    <!-- End Sidebar -->
+    
   </div>
 
   <div class="bottom"></div>
