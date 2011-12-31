@@ -7,6 +7,7 @@ FactoryGirl.define do
     uid "0000"
     name "Guy Lafleur"
     nickname "guylafleur"
+    email "guy@example.com"
     cached_slug "guylafleur"
   end
 	

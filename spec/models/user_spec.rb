@@ -31,6 +31,11 @@ describe User do
       }.should raise_error(ActiveRecord::RecordInvalid)
     end    
  
+    it "should not require an email address" do
+      user = Factory.build(:user, :email => "")
+      user.should be_valid
+    end
+ 
   end
 
   describe "#create_with_omniauth" do
@@ -48,7 +53,8 @@ describe User do
       			"uid"=>"54321", 
             "user_info"=> {
       					"name" => "Test User",
-                                        "nickname" => "Nick Name"
+                "nickname" => "Nick Name",
+                "email" => "test@example.com"
       				}
         }
       end
@@ -59,6 +65,7 @@ describe User do
         user.uid.should == @valid_auth["uid"]  
         user.name.should == @valid_auth["user_info"]["name"]
         user.nickname.should == @valid_auth["user_info"]["nickname"]
+        user.email.should == @valid_auth["user_info"]["email"]
       end
     end
     
