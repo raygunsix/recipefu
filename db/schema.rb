@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111231035815) do
+ActiveRecord::Schema.define(:version => 20120109070730) do
 
   create_table "amounts", :force => true do |t|
     t.integer  "quantity"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20111231035815) do
     t.string   "nickname"
     t.string   "cached_slug"
     t.string   "email"
+    t.string   "image"
   end
 
   add_index "users", ["cached_slug"], :name => "index_users_on_cached_slug", :unique => true

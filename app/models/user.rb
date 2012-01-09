@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
       user.uid = auth["uid"]
       user.name = auth["user_info"]["name"]  
       user.nickname = auth["user_info"]["nickname"]
-      user.email = auth["user_info"]["email"] if auth["user_info"]["email"]    
+      user.email = auth["user_info"]["email"] if auth["user_info"]["email"] 
+      user.image = auth["user_info"]["image"] if auth["user_info"]["image"]    
     end  
   end
 end

@@ -36,6 +36,11 @@ describe User do
       user.should be_valid
     end
  
+    it "should not require an image" do
+      user = Factory.build(:user, :image => "")
+      user.should be_valid
+    end
+ 
   end
 
   describe "#create_with_omniauth" do
@@ -54,7 +59,8 @@ describe User do
             "user_info"=> {
       					"name" => "Test User",
                 "nickname" => "Nick Name",
-                "email" => "test@example.com"
+                "email" => "test@example.com",
+                "image" => "http://image.url"
       				}
         }
       end
@@ -66,6 +72,7 @@ describe User do
         user.name.should == @valid_auth["user_info"]["name"]
         user.nickname.should == @valid_auth["user_info"]["nickname"]
         user.email.should == @valid_auth["user_info"]["email"]
+        user.image.should == @valid_auth["user_info"]["image"]
       end
     end
     
