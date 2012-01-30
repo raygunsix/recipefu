@@ -8,6 +8,7 @@ FactoryGirl.define do
     name "Guy Lafleur"
     nickname "guylafleur"
     email "guy@example.com"
+    image "http://example.com/image.jpg"
     cached_slug "guylafleur"
   end
 	

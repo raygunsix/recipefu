@@ -15,7 +15,8 @@ feature "Recipes", %q{
       :uid => @recipe.user.uid,
       :user_info => {
       :name => @recipe.user.name,
-      :nickname => @recipe.user.nickname}
+      :nickname => @recipe.user.nickname,
+      :image => @recipe.user.image}
     })
 
   end

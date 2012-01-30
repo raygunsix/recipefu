@@ -107,6 +107,7 @@ div#header {
 			}
 			div#header ul li a:hover { color: #333; }
 			div#header li.active a{ background: #dddddd; color: #000; }
+
 div#page {
 	width: 980px;
 	margin: 0 auto;
@@ -165,7 +166,7 @@ div#page {
 			margin: 25px 50px 0px 0px;
 		}
 			div#page .header_home .info h1 { padding: 0; margin-bottom: 15px; font-size: 30px; color: #363636; }
-			div#page .header_home .info p{ font-size: 18px; color: #363636; margin-bottom: 30px; margin-right: 30px; }
+			div#page .header_home .info p{ font-size: 13px; color: #363636; margin-bottom: 30px; margin-right: 30px; }
 			div#page .header_home .info .trial { font-size: 11px; color: #7d7d7d; margin-left: 12px; }
 	div#page .top {
 		background: url('../images/page_top.gif') no-repeat top;
@@ -194,7 +195,6 @@ div#page {
 		height: 56px;
 		margin-left: -46px;
 		margin-bottom: 10px;
-		margin-top: 30px;
 	}
 		div#page .section_title h3{
 			font-size: 15px;
@@ -305,26 +305,32 @@ div#screenshots .items ul{ list-style: none; float: left; }
 div#features { }
 	div#features p {
 		float: left;
-		width: 260px;
-		font-size: 12px;
+		width: 235px;
+		font-size: 16px;
 		color: #363636;
-		margin-right: 50px;
+		margin-right: 30px;
+		background: #EEEEEE;
+		padding: 20px;
+		-moz-border-radius: 8px;
+		border-radius: 8px;
 	}
 		div#features p.last { margin-right: 0; }
+		div#features a.recipe_links { line-height: 20px; }
 		div#features p b{
 			display: block;
-			font-size: 17px;
+			font-size: 22px;
 			font-weight: normal;
 			margin-bottom: 12px;
 		}
 		div#features p img{
 			float: left;
 			margin-right: 15px;
-			margin-top: -3px;
+			margin-top: 0px;
 		}
 		div#features .spacer{
 			padding: 20px 0px 20px 0px;
 		}
+
 /*--------------------------------------------
 About
 ---------------------------------------------*/
@@ -535,7 +541,7 @@ span.highlight_dark { color: #fff; background: #555; padding: 2px 6px; }
 span.highlight_light { background: #ffffc8; padding: 2px 6px; }
 div#page p {
 	margin-bottom: 15px;
-	line-height: 22px;
+	line-height: 18px;
 }
 div.wrap_image_left,
 div.wrap_image_right {

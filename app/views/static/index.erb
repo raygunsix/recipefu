@@ -24,11 +24,39 @@
 			<div class="clear"></div>
 			
 		</div>
+		
+    <div id="home" class="padding">
 
-    <div class="clear"></div>
+  		<div id="features">
 
+  			<div class="section_title">
+  				<h3>Meet the Cooks</h3>
+  			</div>
+
+        <% @profiles.each do |p| %>
+
+          <% if p == @profiles.last %>
+            <p class="last">  
+          <% else %>
+            <p>
+          <% end %>        
+            <b><%= p.name %></b>
+            <%= image_tag(p.image) %>
+            <% p.recipes[0,3].each do |r| %>
+              <%= link_to r.title, user_recipe_path(:user_id => p.cached_slug, :id => r.cached_slug), :class => "recipe_links" %></br>
+            <% end %>
+          </p>
+
+        <% end %>
+
+      </div>
+
+      <div class="clear"></div>
+
+    </div>
+  
   </div>
-
+  
   <div class="bottom"></div>
 
 </div>

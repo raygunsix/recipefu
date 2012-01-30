@@ -1,9 +1,7 @@
 class StaticController < ApplicationController
 
   def index
-
-  #@users = 
-
+    @profiles = User.find(:all, :limit => 3) 
   end
 
 end
