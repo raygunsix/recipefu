@@ -1,7 +1,7 @@
 class StaticController < ApplicationController
 
   def index
-    @profiles = User.find(:all, :limit => 3) 
+    @profiles = User.where("image IS NOT NULL")
   end
 
 end
