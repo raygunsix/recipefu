@@ -49,22 +49,30 @@ feature "Recipes", %q{
     fill_in "Ingredient", :with => @ingredient.name
     click_on "Create Recipe"
     page.should have_content(@recipe.title)
+    page.should have_content(@recipe.description)
+    page.should have_content(@recipe.instructions)
+    page.should have_content(@amount.quantity)
+    page.should have_content(@amount.size)
+    page.should have_content(@ingredient.name)
     page.should have_content("Recipe was successfully created.")
   end
 
   scenario "edit a recipe" do
+    @recipe.ingredients << @ingredient
+    @recipe.amounts << Factory(:amount, :ingredient_id => Factory(:ingredient))
     @recipe.save
     login_with_oauth
     visit "/guylafleur/recipes/" + @recipe.cached_slug + "/edit"
-    fill_in "Title", :with => "Rabbit Stew"
-    fill_in "Description", :with => "This is the best stew ever"
-    fill_in "Instructions", :with => "Forget it. Order take out."
-    #fill_in "Quantity", :with => 4
+    fill_in "Quantity", :with => 1.5
+    fill_in "Title", :with => "Rabbit Stew" 
     click_on "Update Recipe"
     page.should have_content("Rabbit Stew")
-    #page.should have_content("4")
+    page.should have_content(@recipe.description)
+    page.should have_content(@recipe.instructions)
+    page.should have_content("1.5")
+    page.should have_content(@amount.size)
+    page.should have_content(@ingredient.name)
     page.should have_content("Recipe was successfully updated.")
-    page.should have_content("Forget it. Order take out.")
   end
 
   scenario "create a recipe" do
