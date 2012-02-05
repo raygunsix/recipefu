@@ -24,7 +24,7 @@
           <b>Ingredients</b>
           </br>
           <% @recipe.amounts.each do |amount| %>
-            <%= amount.quantity %> <%= amount.size %> <%= amount.ingredient.name %></br>
+            <%= number_with_precision(amount.quantity, :precision => 1, :strip_insignificant_zeros => true) %> <%= amount.size %> <%= amount.ingredient.name %></br>
           <% end %>
         </p>
 

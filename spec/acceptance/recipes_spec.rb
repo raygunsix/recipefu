@@ -63,13 +63,13 @@ feature "Recipes", %q{
     @recipe.save
     login_with_oauth
     visit "/guylafleur/recipes/" + @recipe.cached_slug + "/edit"
-    fill_in "Quantity", :with => 1.5
     fill_in "Title", :with => "Rabbit Stew" 
+    fill_in "Quantity", :with => "1" 
     click_on "Update Recipe"
     page.should have_content("Rabbit Stew")
     page.should have_content(@recipe.description)
     page.should have_content(@recipe.instructions)
-    page.should have_content("1.5")
+    page.should have_content("1")
     page.should have_content(@amount.size)
     page.should have_content(@ingredient.name)
     page.should have_content("Recipe was successfully updated.")

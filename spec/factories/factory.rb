@@ -21,7 +21,7 @@ FactoryGirl.define do
   end
 
   factory :amount do
-    quantity 1
+    quantity 1.5
     size "pot"
   end
 
