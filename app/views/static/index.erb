@@ -43,7 +43,7 @@
             <b><%= p.name %></b>
             <%= image_tag(p.image) %>
             <% p.recipes[0,3].each do |r| %>
-              <%= link_to r.title, user_recipe_path(:user_id => p.cached_slug, :id => r.cached_slug), :class => "recipe_links" %></br>
+              <%= link_to truncate(r.title, :length => 30, :separator => ' '), user_recipe_path(:user_id => p.cached_slug, :id => r.cached_slug), :class => "recipe_links" %></br>
             <% end %>
           </p>
 

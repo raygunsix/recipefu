@@ -315,7 +315,10 @@ div#features { }
 		border-radius: 8px;
 	}
 		div#features p.last { margin-right: 0; }
-		div#features a.recipe_links { line-height: 20px; }
+		div#features a.recipe_links {
+                  line-height: 13px;
+                  font-size: 13px;
+                }
 		div#features p b{
 			display: block;
 			font-size: 22px;
