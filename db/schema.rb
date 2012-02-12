@@ -66,6 +66,6 @@ ActiveRecord::Schema.define(:version => 20120206040605) do
   end
 
   add_index "users", ["cached_slug"], :name => "index_users_on_cached_slug", :unique => true
-  add_index "users", ["id"], :name => "index_users_on_id"
+  add_index "users", ["id"], :name => "index_users_on_id", :unique => true
 
 end

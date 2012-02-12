@@ -12,8 +12,13 @@ class User < ActiveRecord::Base
     create! do |user|  
       user.provider = auth["provider"]  
       user.uid = auth["uid"]
-      user.name = auth["user_info"]["name"]  
-      user.nickname = auth["user_info"]["nickname"]
+      user.name = auth["user_info"]["name"]
+      # create nickname if not provided  
+      if auth["user_info"]["nickname"]
+        user.nickname = auth["user_info"]["nickname"]
+      else
+        user.nickname = auth["user_info"]["name"].gsub(/[^0-9A-Za-z]/, '').downcase
+      end
       user.email = auth["user_info"]["email"] if auth["user_info"]["email"] 
       user.image = auth["user_info"]["image"] if auth["user_info"]["image"]    
     end  
