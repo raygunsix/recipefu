@@ -18,7 +18,9 @@ gem 'omniauth', "~> 0.2.6"
 gem 'pg'
 gem 'nested_form'
 gem 'friendly_id', '~> 3.3'
-
+gem 'thin'
+gem 'foreman'
+  
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
@@ -30,6 +32,5 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
   gem 'newrelic_rpm'
 end
