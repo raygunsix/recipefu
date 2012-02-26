@@ -20,6 +20,7 @@ gem 'nested_form'
 gem 'friendly_id', '~> 3.3'
 gem 'thin'
 gem 'foreman'
+gem "redis", "~> 2.2.2"
   
 group :development, :test do
   gem 'rspec-rails'
