@@ -17,32 +17,26 @@
         <% end %>
         
         <p>
-        <% @ingredients.each do |ingredient| %>
-          <%= ingredient.name %></br>
+        <% @list.each do |item| %>
+          <%= item %></br>
         <% end %>
         </p>
-
-        <!-- <% if current_user %>
-          <%= link_to 'Edit', edit_user_recipe_path(@user) %> |
-        <% end %>
-
-        <%= link_to 'Back', user_recipes_path %> -->
 
       </div>
     
    <!-- Start Sidebar -->
    
-      <!-- <div class="right">
+      <div class="right">
         
-      <div class="sidebar_box">
+      <!-- <div class="sidebar_box">
         <p></p>
-      </div>
+      </div> -->
         
       </div>
     
       <div class="clear"></div>
     
-    </div> -->      
+    </div>      
     
     <!-- End Sidebar -->
     

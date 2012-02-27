@@ -1,10 +1,12 @@
 class ListsController < ApplicationController
   
-  # GET /lists/1
-  # GET /lists/1.xml
-  def index
-    @list = # get index array from redis
-
+  # GET /list
+  # GET /list.xml
+  def show
+    @list = REDIS.smembers(params[:user_id] + "_list")
+    
+    #render :text => REDIS.smembers(params[:user_id] + "_list")
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @ingredients }
