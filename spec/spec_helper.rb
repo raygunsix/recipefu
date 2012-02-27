@@ -37,7 +37,7 @@ RSpec.configure do |config|
     redis_options = {
       "daemonize"     => 'yes',
       "pidfile"       => REDIS_PID,
-      "port"          => 9736,
+      "port"          => 9379,
       "timeout"       => 300,
       "save 900"      => 1,
       "save 300"      => 1,
@@ -45,7 +45,7 @@ RSpec.configure do |config|
       "dbfilename"    => "dump.rdb",
       "dir"           => REDIS_CACHE_PATH,
       "loglevel"      => "debug",
-      "logfile"       => "stdout",
+      "logfile"       => "/tmp/redis_test.log",
       "databases"     => 16
     }.map { |k, v| "#{k} #{v}" }.join('\n')
     `echo '#{redis_options}' | redis-server -`

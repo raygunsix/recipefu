@@ -1,0 +1,53 @@
+<div id="page">
+			
+<div class="top"></div>
+
+  <div class="content">
+		
+    <div class="header page">
+	    <h1>list</h1>
+    </div>
+
+    <div id="" class="padding">
+  
+      <div class="left">
+  
+        <% if notice %>
+        <p id="notice"><%= notice %></p>
+        <% end %>
+        
+        <p>
+        <% @ingredients.each do |ingredient| %>
+          <%= ingredient.name %></br>
+        <% end %>
+        </p>
+
+        <!-- <% if current_user %>
+          <%= link_to 'Edit', edit_user_recipe_path(@user) %> |
+        <% end %>
+
+        <%= link_to 'Back', user_recipes_path %> -->
+
+      </div>
+    
+   <!-- Start Sidebar -->
+   
+      <!-- <div class="right">
+        
+      <div class="sidebar_box">
+        <p></p>
+      </div>
+        
+      </div>
+    
+      <div class="clear"></div>
+    
+    </div> -->      
+    
+    <!-- End Sidebar -->
+    
+  </div>
+
+  <div class="bottom"></div>
+
+</div>
