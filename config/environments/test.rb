@@ -32,4 +32,9 @@ Recipefu::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
+  # redis url
+  ENV["REDISTOGO_URL"] = 'redis://localhost:9379' 
+  
 end
+
