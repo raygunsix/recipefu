@@ -13,6 +13,16 @@ class ListsController < ApplicationController
     end
   end
 
+  # GET /list/new
+  # GET /list/new.xml
+  def new
+    @list = List.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @list }
+    end
+  end
   
   
 end

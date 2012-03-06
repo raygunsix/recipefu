@@ -32,16 +32,18 @@ feature "Lists", %q{
     page.should have_content(@recipe.amounts[0].ingredient.name)
   end
 
-  # scenario "add a new list" do
-  #   login_with_oauth
-  #   visit "/guylafleur/list/new"
-  #   fill_in "Ingredient", :with => @ingredient.name
-  #   click_on "Create List"
-  #   page.should have_content(@amount.quantity)
-  #   page.should have_content(@amount.size)
-  #   page.should have_content(@ingredient.name)
-  #   page.should have_content("List was successfully created.")
-  # end
+  scenario "add a new list" do
+    login_with_oauth
+    @recipe.ingredients << @ingredient
+    @recipe.amounts << Factory(:amount, :ingredient_id => Factory(:ingredient))
+    @recipe.save    
+    visit "/" + @recipe.user.nickname + "/list/new"
+    click_on "Create List"
+    page.should have_content(@recipe.amount[0].quantity)
+    page.should have_content(@recipe.amount[0].size)
+    page.should have_content(@recipe.ingredient[0].name)
+    page.should have_content("List was successfully created.")
+  end
 
   # scenario "create a recipe" do
   #   login_with_oauth

@@ -12,6 +12,7 @@ Recipefu::Application.routes.draw do
   resources :users, :path => '' do
     resources :recipes
     match "list" => "lists#show", :as => :list
+    match "list/new" => "lists#new", :as => :new_list
   end  
 
 
