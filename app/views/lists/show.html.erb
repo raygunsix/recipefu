@@ -1,21 +1,21 @@
 <div id="page">
-			
+
 <div class="top"></div>
 
   <div class="content">
-		
+
     <div class="header page">
-	    <h1>list</h1>
+      <h1>list</h1>
     </div>
 
     <div id="" class="padding">
-  
+
       <div class="left">
-  
+
         <% if notice %>
         <p id="notice"><%= notice %></p>
         <% end %>
-        
+
         <p>
         <% @list.each do |item| %>
           <%= item %></br>
@@ -23,23 +23,23 @@
         </p>
 
       </div>
-    
+
    <!-- Start Sidebar -->
-   
+
       <div class="right">
-        
+
       <!-- <div class="sidebar_box">
         <p></p>
       </div> -->
-        
+
       </div>
-    
+
       <div class="clear"></div>
-    
-    </div>      
-    
+
+    </div>
+
     <!-- End Sidebar -->
-    
+
   </div>
 
   <div class="bottom"></div>

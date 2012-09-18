@@ -1,8 +1,7 @@
-<%= nested_form_for([current_user, @list]) do |f| %>
+<%= form_for @list, :url => user_lists_path do |f| %>
   <% if @list.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@list.errors.count, "error") %> prohibited this recipe from being saved:</h2>
-
       <ul>
       <% @list.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -12,18 +11,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title, :class => "text_field" %>
+    <%= select_tag :ingredients, options_for_select(@titles) %>
   </div>
-  
   </br></br>
 
-   <%= f.link_to_add "add ingredient", :amounts %>
-
-   </br>
+  <%= f.link_to_add "add ingredient", :amounts %>
 
   <div class="send_form actions">
     <%= f.submit :class => "button" %>
   </div>
-  
+
 <% end %>

@@ -5,15 +5,14 @@ Recipefu::Application.routes.draw do
 
   root :to => "static#index"
 
-  match "/login" => "sessions#login", :as => :login 
+  match "/login" => "sessions#login", :as => :login
 
-  match "/logout" => "sessions#destroy", :as => :logout 
+  match "/logout" => "sessions#destroy", :as => :logout
 
   resources :users, :path => '' do
     resources :recipes
-    match "list" => "lists#show", :as => :list
-    match "list/new" => "lists#new", :as => :new_list
-  end  
+    resources :lists
+  end
 
 
   # The priority is based upon order of creation:

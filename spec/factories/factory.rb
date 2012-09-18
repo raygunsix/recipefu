@@ -29,4 +29,10 @@ FactoryGirl.define do
     name "water"
   end
 
+  # factory :list do
+  #   ingredient1 "3 cups chicken stock"
+  #   ingredient2 "1 onion"
+  #   ingredient3 "1 bunch bananas"
+  # end
+
 end
