@@ -1,61 +1,67 @@
 <div id="page">
-			
-<div class="top"></div>
 
-  <div class="content">
-		
-    <div class="header page">
-	    <h1><%= @recipe.title %></h1>
-    </div>
+  <div itemscope itemtype="http://schema.org/Recipe">
 
-    <div id="" class="padding">
-  
-      <div class="left">
-  
-        <% if notice %>
-        <p id="notice"><%= notice %></p>
-        <% end %>
-        
-        <p>
-          <%= @recipe.instructions %>
-        </p>
-        
-        <p>
+    <div class="top"></div>
+
+    <div class="content">
+
+      <div class="header page">
+        <span itemprop="name"><h1><%= @recipe.title %></h1></span>
+      </div>
+
+      <div id="" class="padding">
+
+        <div class="left">
+
+          <% if notice %>
+            <p id="notice"><%= notice %></p>
+          <% end %>
+
+          <p>
+          <span itemprop="recipeInstructions"><%= @recipe.instructions %></span>
+          </p>
+
+          <p>
           <b>Ingredients</b>
           </br>
           <% @recipe.amounts.each do |amount| %>
-            <%= number_with_precision(amount.quantity, :precision => 1, :strip_insignificant_zeros => true) %> <%= amount.size %><% if amount.ingredient %><%= amount.ingredient.name %><% end %></br>
+            <span itemprop="ingredients">
+              <%= number_with_precision(amount.quantity, :precision => 1, :strip_insignificant_zeros => true) %> <%= amount.size %><% if amount.ingredient %><%= amount.ingredient.name %><% end %></br>
+            </span>
           <% end %>
-        </p>
+          </p>
 
-        <% if current_user %>
-          <%= link_to 'Edit', edit_user_recipe_path(@user) %> |
-        <% end %>
+          <% if current_user %>
+            <%= link_to 'Edit', edit_user_recipe_path(@user) %> |
+          <% end %>
 
-        <%= link_to 'Back', user_recipes_path %>
+          <%= link_to 'Back', user_recipes_path %>
+
+        </div>
+
+        <!-- Start Sidebar -->
+
+        <div class="right">
+
+          <div class="sidebar_box">
+            <p>
+            <span itemprop="description"><%= @recipe.description %></span>
+            </p>
+          </div>
+
+        </div>
+
+        <div class="clear"></div>
 
       </div>
-    
-   <!-- Start Sidebar -->
-   
-      <div class="right">
-        
-      <div class="sidebar_box">
-        <p>
-          <%= @recipe.description %>
-        </p>
-      </div>
-        
-      </div>
-    
-      <div class="clear"></div>
-    
-    </div>        
-    
-    <!-- End Sidebar -->
-    
+
+      <!-- End Sidebar -->
+
+    </div>
+
+    <div class="bottom"></div>
+
   </div>
-
-  <div class="bottom"></div>
 
 </div>
